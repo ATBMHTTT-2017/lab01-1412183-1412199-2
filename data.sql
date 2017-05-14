@@ -349,21 +349,21 @@ insert all
 	into Charge (Charge_id, Charge_for , Amount, Proj_id, Staff_id) VALUES
 					(1, 'market survey', 400000,1, 'xxxxxxxx11')
 	into Charge (Charge_id, Charge_for , Amount, Proj_id, Staff_id) VALUES
-					(2, 'food for OT', 360000,1, 'xxxxxxxx12')
+					(2, 'food for OT', 300000,1, 'xxxxxxxx12')
 	into Charge (Charge_id, Charge_for , Amount, Proj_id, Staff_id) VALUES
-					(3, 'food for OT', 400000,2, 'xxxxxxxx22')
+					(3, 'food for OT', 100000,2, 'xxxxxxxx22')
 	into Charge (Charge_id, Charge_for , Amount, Proj_id, Staff_id) VALUES
 					(4, 'food for OT', 360000,2, 'xxxxxxxx23')
 	into Charge (Charge_id, Charge_for , Amount, Proj_id, Staff_id) VALUES
-					(5, 'upgrade hhd', 4000000,3, 'xxxxxxxx33')
+					(5, 'upgrade hhd', 3000000,3, 'xxxxxxxx33')
 	into Charge (Charge_id, Charge_for , Amount, Proj_id, Staff_id) VALUES
 					(6, 'upgrade hhd', 360000,3, 'xxxxxxxx34')
 	into Charge (Charge_id, Charge_for , Amount, Proj_id, Staff_id) VALUES
-					(7, 'buy things', 400000,4, 'xxxxxxxx42')
+					(7, 'buy things', 600000,4, 'xxxxxxxx42')
 	into Charge (Charge_id, Charge_for , Amount, Proj_id, Staff_id) VALUES
 					(8, 'buy things', 360000,4, 'xxxxxxxx44')
 	into Charge (Charge_id, Charge_for , Amount, Proj_id, Staff_id) VALUES
-					(9, 'medical', 400000,5, 'xxxxxxxx52')
+					(9, 'medical', 800000,5, 'xxxxxxxx52')
 	into Charge (Charge_id, Charge_for , Amount, Proj_id, Staff_id) VALUES
 					(10, 'medical', 360000,5,'xxxxxxxx55')
 SELECT 1 FROM DUAL;

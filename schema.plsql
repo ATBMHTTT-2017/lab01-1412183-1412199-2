@@ -44,7 +44,7 @@ ALTER TABLE Branch
 --DROP TABLE Project;
 CREATE TABLE Project
 (
-      Project_id int NOT NULL,
+    Project_id int NOT NULL,
     Project_name NVARCHAR2(50) UNIQUE NOT NULL,
     Project_budget double PRECISION NOT NULL,
     Project_depart_host int NOT NULL,

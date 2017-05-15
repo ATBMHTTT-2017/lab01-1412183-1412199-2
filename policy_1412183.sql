@@ -1,3 +1,19 @@
+-- CREATE USER DBCompany_admin IDENTIFIED BY DBCom_a123;
+-- --GRANT DBA TO DBACompany_admin;
+-- GRANT CONNECT TO DBCompany_admin;
+-- GRANT CONNECT, RESOURCE, DBA TO DBCompany_admin;
+-- GRANT CREATE SESSION GRANT ANY PRIVILEGE TO DBCompany_admin;
+-- GRANT UNLIMITED TABLESPACE TO DBCompany_admin;
+-- GRANT
+--   SELECT,
+--   INSERT,
+--   UPDATE,
+--   DELETE
+-- ON
+--   schema.Project
+-- TO
+--   DBCompany_admin;
+
 --USER - trưởng phòng
 --1
 CREATE USER xxxxxxxx98 IDENTIFIED BY xxxxxL293;

@@ -1,4 +1,4 @@
---create func
+			--create func
 Create OR REPLACE function view_own_proj(v_schema in varchar2, v_obj in varchar2)
 Return varchar2
 AS

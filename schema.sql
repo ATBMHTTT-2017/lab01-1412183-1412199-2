@@ -3,11 +3,14 @@
 CREATE TABLE Staff
 (
     Staff_id CHAR(10) NOT NULL,
+    Staff_date_joint date;
     Staff_name NVARCHAR2(50) NOT NULL,
     Staff_addr NVARCHAR2(50),
+    Staff_job_name NVARCHAR2(50),
     Staff_phoneNumber VARCHAR2(11),
     Staff_salary double PRECISION NOT NULL, 
     Staff_depart int NOT NULL,
+    Staff_branch int Not NUll
     constraint PK_Staff PRIMARY KEY (Staff_id)
 );
 --2. Phòng ban
@@ -18,6 +21,8 @@ CREATE TABLE Department
     Depart_name NVARCHAR2(50) NOT NULL,
     Depart_chief CHAR(10) NOT NULL,
     Depart_branch int NOT NULL,
+    Depart_Total_Staff int not null,
+    Depart_chief_start_date date null,
     constraint PK_Department PRIMARY KEY (Depart_id)
 );
 ALTER TABLE Department
@@ -34,6 +39,7 @@ CREATE TABLE Branch
     Branch_id int NOT NULL,
     Branch_name NVARCHAR2(50) UNIQUE NOT NULL,
     Branch_director CHAR(10),
+    Branch_director_start_date date null,
     constraint PK_Branch PRIMARY KEY (Branch_id) 
 );
 --update column
@@ -77,6 +83,8 @@ CREATE TABLE Charge
 --1. Staff
 ALTER TABLE Staff ADD CONSTRAINT FK_Staff_Department FOREIGN KEY (Staff_depart)
 REFERENCES Department(Depart_id) on delete SET NULL;
+ALTER TABLE Staff ADD CONSTRAINT FK_Staff_Branch FOREIGN KEY (Staff_branch)
+REFERENCES Department(Branch_id) on delete SET NULL;
 --2. Department
 ALTER TABLE Department ADD CONSTRAINT FK_Department_Branch FOREIGN KEY (Depart_branch)
 REFERENCES Branch(Branch_id) on delete SET NULL;

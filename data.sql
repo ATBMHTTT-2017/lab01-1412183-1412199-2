@@ -274,28 +274,65 @@ SELECT 1 FROM DUAL;
 	
 -- cập nhật các trưởng chi nhánh-chọn giám đốc phòng kế hoạch làm trưởng chi nhánh
 --trưởng chi nhánh Cần Thơ là giám đốc phòng Kế Hoạch
-update Branch set Branch_director = 'xxxxxxxxx8' where Branch_id = 1;
-update Branch set Branch_director = 'xxxxxxxxx26' where Branch_id = 2;
-update Branch set Branch_director = 'xxxxxxxxx43' where Branch_id = 3;
-update Branch set Branch_director = 'xxxxxxx61' where Branch_id = 4;
-update Branch set Branch_director = 'xxxxxxxx79' where Branch_id = 5;
+update Branch 
+	set Branch_director = 'xxxxxxxxx8',
+	    Branch_director_start_date=to_char(sysdate, 'dd/mm/yyyy')
+where Branch_id = 1;
+update Branch 
+	set Branch_director = 'xxxxxxxxx26',
+		Branch_director_start_date=to_char(sysdate, 'dd/mm/yyyy') 
+where Branch_id = 2;
+update Branch
+	set Branch_director = 'xxxxxxxxx43'
+		,Branch_director_start_date=to_char(sysdate, 'dd/mm/yyyy')
+where Branch_id = 3;
+update Branch
+	set Branch_director = 'xxxxxxx61' ,
+		Branch_director_start_date=to_char(sysdate, 'dd/mm/yyyy')
+where Branch_id = 4;
+update Branch
+	set Branch_director = 'xxxxxxxx79'
+		,Branch_director_start_date=to_char(sysdate, 'dd/mm/yyyy')
+where Branch_id = 5;
+--cập nhật số nhân viên
+update Department set Depart_Total_Staff = 4 where Depart_id =1;
+update Department set Depart_Total_Staff = 4 where Depart_id =2;
+update Department set Depart_Total_Staff = 10 where Depart_id =3;
+update Department set Depart_Total_Staff = 4 where Depart_id =4;
+update Department set Depart_Total_Staff = 4 where Depart_id =5;
+update Department set Depart_Total_Staff = 10 where Depart_id =6;
+update Department set Depart_Total_Staff = 4 where Depart_id =7;
+update Department set Depart_Total_Staff = 4 where Depart_id =8;
+update Department set Depart_Total_Staff = 10 where Depart_id =9;
+update Department set Depart_Total_Staff = 4 where Depart_id =10;
+update Department set Depart_Total_Staff = 4 where Depart_id =11;
+update Department set Depart_Total_Staff = 10 where Depart_id =12;
+update Department set Depart_Total_Staff = 4 where Depart_id =13;
+update Department set Depart_Total_Staff = 4 where Depart_id =14;
+update Department set Depart_Total_Staff = 10 where Depart_id =15;
 --cập nhật trưởng phòng-
 
-update Department set Depart_chief = 'xxxxxxxxx3' where Depart_id = 1;
-update Department set Depart_chief = 'xxxxxxxxx7' where Depart_id = 2;
-update Department set Depart_chief = 'xxxxxxxxx17' where Depart_id = 3;
-update Department set Depart_chief = 'xxxxxxxxx21' where Depart_id = 4;
-update Department set Depart_chief = 'xxxxxxxx25' where Depart_id = 5;
-update Department set Depart_chief = 'xxxxxxxx35' where Depart_id = 6;
-update Department set Depart_chief = 'xxxxxxxx39' where Depart_id = 7;
-update Department set Depart_chief = 'xxxxxxxx42' where Depart_id = 8;
-update Department set Depart_chief = 'xxxxxxxx52' where Depart_id = 9;
-update Department set Depart_chief = 'xxxxxxxx56' where Depart_id = 10;
-update Department set Depart_chief = 'xxxxxxxx60' where Depart_id = 11;
-update Department set Depart_chief = 'xxxxxxxx70' where Depart_id = 12;
-update Department set Depart_chief = 'xxxxxxxx74' where Depart_id = 13;
-update Department set Depart_chief = 'xxxxxxxx78' where Depart_id = 14;
-update Department set Depart_chief = 'xxxxxxxx88' where Depart_id = 15;
+update Department 
+	set Depart_chief = 'xxxxxxxxx3'
+		,Depart_chief_start_date =to_char(sysdate, 'dd/mm/yyyy')
+ where Depart_id = 1;
+update Department 
+	set Depart_chief = 'xxxxxxxxx7'
+		,Depart_chief_start_date =to_char(sysdate, 'dd/mm/yyyy')
+where Depart_id = 2;
+update Department set Depart_chief = 'xxxxxxxxx17',Depart_chief_start_date =to_char(sysdate, 'dd/mm/yyyy') where Depart_id = 3;
+update Department set Depart_chief = 'xxxxxxxxx21' ,Depart_chief_start_date =to_char(sysdate, 'dd/mm/yyyy')where Depart_id = 4;
+update Department set Depart_chief = 'xxxxxxxx25',Depart_chief_start_date =to_char(sysdate, 'dd/mm/yyyy') where Depart_id = 5;
+update Department set Depart_chief = 'xxxxxxxx35',Depart_chief_start_date =to_char(sysdate, 'dd/mm/yyyy') where Depart_id = 6;
+update Department set Depart_chief = 'xxxxxxxx39' ,Depart_chief_start_date =to_char(sysdate, 'dd/mm/yyyy')where Depart_id = 7;
+update Department set Depart_chief = 'xxxxxxxx42' ,Depart_chief_start_date =to_char(sysdate, 'dd/mm/yyyy')where Depart_id = 8;
+update Department set Depart_chief = 'xxxxxxxx52' ,Depart_chief_start_date =to_char(sysdate, 'dd/mm/yyyy')where Depart_id = 9;
+update Department set Depart_chief = 'xxxxxxxx56' ,Depart_chief_start_date =to_char(sysdate, 'dd/mm/yyyy')where Depart_id = 10;
+update Department set Depart_chief = 'xxxxxxxx60',Depart_chief_start_date =to_char(sysdate, 'dd/mm/yyyy') where Depart_id = 11;
+update Department set Depart_chief = 'xxxxxxxx70' ,Depart_chief_start_date =to_char(sysdate, 'dd/mm/yyyy')where Depart_id = 12;
+update Department set Depart_chief = 'xxxxxxxx74' ,Depart_chief_start_date =to_char(sysdate, 'dd/mm/yyyy')where Depart_id = 13;
+update Department set Depart_chief = 'xxxxxxxx78' ,Depart_chief_start_date =to_char(sysdate, 'dd/mm/yyyy')where Depart_id = 14;
+update Department set Depart_chief = 'xxxxxxxx88' ,Depart_chief_start_date =to_char(sysdate, 'dd/mm/yyyy')where Depart_id = 15;
 --insert dự án
 insert all
 	into Project(Project_id, Project_name, Project_budget, Project_depart_host, Project_leader, Proj_total_expenditure) VALUES

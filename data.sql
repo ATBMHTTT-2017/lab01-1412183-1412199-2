@@ -12,11 +12,10 @@ insert all
 	into Branch(Branch_id, Branch_name, Branch_director, Branch_director_start_date) VALUES (5,'Hà Nội',NULL,NULL)
 	SELECT 1 FROM DUAL;
 					
---Mỗi chi nhánh có 4 phòng ban
+--Mỗi chi nhánh có 3 phòng ban
 --Kế Toán
 --Kế Hoạch
 --Nhân Sự
---Ban Giám đốc -- dùng cho các user role giám đốc, role trưởng chi nhánh
 insert all
 	into Department(Depart_id, Depart_name, Depart_chief, Depart_branch, Depart_Total_Staff, Depart_chief_start_date) VALUES (1, 'Kế Toán', NULL, 1,0,NULL)
 	into Department(Depart_id, Depart_name, Depart_chief, Depart_branch, Depart_Total_Staff, Depart_chief_start_date) VALUES (2, 'Kế Hoạch', NULL, 1,0,NULL)

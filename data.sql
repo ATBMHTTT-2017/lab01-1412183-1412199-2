@@ -5,7 +5,7 @@
 	execute Insert_New_Branch (3,N'Đà Nẵng',NULL,NULL);
 	execute Insert_New_Branch (4,N'Hải Phòng',NULL,NULL);
 	execute Insert_New_Branch (5,N'Hà Nội',NULL,NULL);
-	--select Branch_Id,Branch_name from branch;
+	select count(*) from branch;
 	--Mỗi chi nhánh có 3 phòng ban Kế Toán (4 nhân viên), Kế Hoạch(4 NV), Nhân Sự(10 NV)
 	exec Insert_New_Department(1,N'Kế Toán',NULL,1,0,NULL);
 	exec Insert_New_Department(2,N'Kế Hoạch',NULL,1,0,NULL);
@@ -22,30 +22,29 @@
 	exec Insert_New_Department(13,N'Kế Toán',NULL,5,0,NULL);
 	exec Insert_New_Department(14,N'Kế Hoạch',NULL,5,0,NULL);
 	exec Insert_New_Department(15,N'Nhân Sự',NULL,5,0,NULL);
-	select Depart_id,Depart_branch from Department;
+	select count(*) from Department;
 	--delete from staff;
 	--(Phòng Kế Toán,Chi Nhánh Cần Thơ) => (1,1)
-	execute Insert_New_Staff ('xxxxxxxxx1','John',NULL,'099xxxxxxx',16000000,1,sysdate,1);
-	execute Insert_New_Staff ('xxxxxxxxx2','Robert',NULL,'0166xxxxxxx',28000000,1,sysdate,1);
-	execute Insert_New_Staff ('xxxxxxxxx3','David',NULL,'098xxxxxxx',14000000,1,sysdate,1);
-	execute Insert_New_Staff ('xxxxxxxxx4','Brian',NULL,'098xxxxxxx',14000000,1,sysdate,1);
-
+	execute Insert_New_Staff('xxxxxxxxx1','John',NULL,'099xxxxxxx',16000000,1,sysdate,1);
+	execute Insert_New_Staff('xxxxxxxxx2','Robert',NULL,'0166xxxxxxx',28000000,1,sysdate,1);
+	execute Insert_New_Staff('xxxxxxxxx3','David',NULL,'098xxxxxxx',14000000,1,sysdate,1);
+	execute Insert_New_Staff('xxxxxxxxx4','Brian',NULL,'098xxxxxxx',14000000,1,sysdate,1);
 	--(Phòng Kế Hoạch,Chi Nhánh Cần Thơ) => (1,2)
-	execute Insert_New_Staff ('xxxxxxxxx5','Richard',NULL,'096xxxxxxx',16000000,2,sysdate,1);
-	execute Insert_New_Staff ('xxxxxxxxx6','Charles',NULL,'098xxxxxxx',14000000,2,sysdate,1);
-	execute Insert_New_Staff ('xxxxxxxxx7','Joseph',NULL,'098xxxxxxx',14000000,2,sysdate,1);
-	execute Insert_New_Staff ('xxxxxxxxx8','Ronald',NULL,'096xxxxxxx',16000000,2,sysdate,1);
+	execute Insert_New_Staff('xxxxxxxxx5','Richard',NULL,'096xxxxxxx',16000000,2,sysdate,1);
+	execute Insert_New_Staff('xxxxxxxxx6','Charles',NULL,'098xxxxxxx',14000000,2,sysdate,1);
+	execute Insert_New_Staff('xxxxxxxxx7','Joseph',NULL,'098xxxxxxx',14000000,2,sysdate,1);
+	execute Insert_New_Staff('xxxxxxxxx8','Ronald',NULL,'096xxxxxxx',16000000,2,sysdate,1);
 	--(Phòng Nhân Sự,Chi Nhánh Cần Thơ) => (1,3)
-	execute Insert_New_Staff ('xxxxxxxxx9','Thomas',NULL,'099xxxxxx1',28000000,3,sysdate,1);
-	execute Insert_New_Staff ('xxxxxxxx10','Christopher	',NULL,'0164xxxxxx9',9000000,3,sysdate,1);
-	execute Insert_New_Staff ('xxxxxxxx11','Daniel',NULL,'0168xxxxxx0',13000000,3,sysdate,1);
-	execute Insert_New_Staff ('xxxxxxxx12','Paul',NULL,'0168xxxxxxx',13000000,3,sysdate,1);
-	execute Insert_New_Staff ('xxxxxxxx13','Mark',NULL,'098xxxxxxx',14000000,3,sysdate,1);
-	execute Insert_New_Staff ('xxxxxxxx14','Donald',NULL,'096xxxxxxx',16000000,3,sysdate,1);
-	execute Insert_New_Staff ('xxxxxxxx15','George',NULL,'099xxxxxx1',28000000,3,sysdate,1);
-	execute Insert_New_Staff ('xxxxxxxx16','Kenneth',NULL,'0164xxxxxx9',9000000,3,sysdate,1);
-	execute Insert_New_Staff ('xxxxxxxx17',' Steven',NULL,'0168xxxxxx0',13000000,3,sysdate,1);
-	execute Insert_New_Staff ('xxxxxxxx18','Edward',NULL,'0168xxxxxxx',13000000,3,sysdate,1);
+	execute Insert_New_Staff('xxxxxxxxx9','Thomas',NULL,'099xxxxxx1',28000000,3,sysdate,1);
+	execute Insert_New_Staff('xxxxxxxx10','Christopher	',NULL,'0164xxxxxx9',9000000,3,sysdate,1);
+	execute Insert_New_Staff('xxxxxxxx11','Daniel',NULL,'0168xxxxxx0',13000000,3,sysdate,1);
+	execute Insert_New_Staff('xxxxxxxx12','Paul',NULL,'0168xxxxxxx',13000000,3,sysdate,1);
+	execute Insert_New_Staff('xxxxxxxx13','Mark',NULL,'098xxxxxxx',14000000,3,sysdate,1);
+	execute Insert_New_Staff('xxxxxxxx14','Donald',NULL,'096xxxxxxx',16000000,3,sysdate,1);
+	execute Insert_New_Staff('xxxxxxxx15','George',NULL,'099xxxxxx1',28000000,3,sysdate,1);
+	execute Insert_New_Staff('xxxxxxxx16','Kenneth',NULL,'0164xxxxxx9',9000000,3,sysdate,1);
+	execute Insert_New_Staff('xxxxxxxx17',' Steven',NULL,'0168xxxxxx0',13000000,3,sysdate,1);
+	execute Insert_New_Staff('xxxxxxxx18','Edward',NULL,'0168xxxxxxx',13000000,3,sysdate,1);
 	--select count(*) from staff;
 	--(Phòng Kế Toán,Chi Nhánh Hồ Chí Minh) => (4,2)
 	execute Insert_New_Staff('xxxxxxxx19','Kevin',NULL,'0168xxxxxx0',13000000,4,sysdate,2);
@@ -98,9 +97,9 @@
 	execute Insert_New_Staff('xxxxxxxx58','Nancy',NULL,'0168xxxxxx0',13000000,10,sysdate,4);
 	--(Phòng Kế Hoach,Chi Nhánh Hải Phòng) => (11,4)
 	execute Insert_New_Staff('xxxxxxxx59','KarenK',NULL,'0168xxxxxxx',13000000,11,sysdate,4);
-	execute Insert_New_Staff('xxxxxxxx60','BettyB',NULL,'098xxxxxxxx',14000000,sysdate,4);
-	execute Insert_New_Staff('xxxxxxxx61','HelenLa',NULL,'096xxxxxxxx',16000000,sysdate,4);
-	execute Insert_New_Staff('xxxxxxxx62','Sandrat',NULL,'099xxxxxx1x',28000000,sysdate,4);
+	execute Insert_New_Staff('xxxxxxxx60','BettyB',NULL,'098xxxxxxxx',14000000,11,sysdate,4);
+	execute Insert_New_Staff('xxxxxxxx61','HelenLa',NULL,'096xxxxxxxx',16000000,11,sysdate,4);
+	execute Insert_New_Staff('xxxxxxxx62','Sandrat',NULL,'099xxxxxx1x',28000000,11,sysdate,4);
 	--(Phòng Nhân sự,Chi Nhánh Hải Phòng) => (12,4)
 	execute Insert_New_Staff('xxxxxxxx63','Carol',NULL,'0168xxxxxx0',13000000,12,sysdate,4);
 	execute Insert_New_Staff('xxxxxxxx64','Sharon',NULL,'0168xxxxxxx',13000000,12,sysdate,4);
@@ -112,7 +111,6 @@
 	execute Insert_New_Staff('xxxxxxxx70','Shirley',NULL,'098xxxxxxx',14000000,12,sysdate,4);
 	execute Insert_New_Staff('xxxxxxxx71','Cynthia',NULL,'096xxxxxxx',16000000,12,sysdate,4);
 	execute Insert_New_Staff('xxxxxxxx72','Christina',NULL,'099xxxxxx1',28000000,12,sysdate,4);
-	--select count(*) from staff;
 	--(Phòng Kế Toán,Chi Nhánh Hà Nội) => (13,5)
 	execute Insert_New_Staff('xxxxxxxx73','Katherine',NULL,'0168xxxxxx0',13000000,13,sysdate,5);
 	execute Insert_New_Staff('xxxxxxxx74','Rose',NULL,'0168xxxxxxx',13000000,13,sysdate,5);
@@ -134,7 +132,7 @@
 	execute Insert_New_Staff('xxxxxxxx88','Tiffany',NULL,'099xxxxxx1',28000000, 15,sysdate,5);
 	execute Insert_New_Staff('xxxxxxxx89','Victoria',NULL,'099xxxxxx1',28000000, 15,sysdate,5);
 	execute Insert_New_Staff('xxxxxxxx90','Sylvia',NULL,'099xxxxxx1',28000000, 15,sysdate,5);
-	select Staff_id,Staff_name,Staff_date_joint,Staff_depart,Staff_branch from Staff;
+	select count(*) from Staff;
 	-- cập nhật các trưởng chi nhánh-chọn giám đốc phòng kế hoạch làm trưởng chi nhánh
 	--trưởng chi nhánh Cần Thơ là giám đốc phòng Kế Hoạch
 	exec Update_Branch_Director(1,'xxxxxxxxx8');
@@ -159,43 +157,46 @@
 	exec Update_Depart_Chief(13,'xxxxxxxx74');
 	exec Update_Depart_Chief(14,'xxxxxxxx78');
 	exec Update_Depart_Chief(15,'xxxxxxxx88');
+	select Depart_id, Depart_branch, Depart_name, Depart_Chief from Department;
 -	-insert dự án
 	exec Insert_New_Project(1,'Proj1', 900000000,2,'xxxxxxxxx6',180000000 )
 	exec Insert_New_Project(2,'Proj2',1100000000,5,'xxxxxxxx24',600000000 )
   	exec Insert_New_Project(3,'Proj3',1300000000,8,'xxxxxxxx41',339000000)
 	exec Insert_New_Project(4,'Proj4',2200000000,11,'xxxxxxxx59',800000000 )
 	exec Insert_New_Project(5,'Proj5',4600000000,14,'xxxxxxxx77',456000000 )
+	select count(*) from Project;
 	--insert phân công
 	exec Insert_New_Assignment('xxxxxxxxx6',1,'Leader',100000000)
 	exec Insert_New_Assignment('xxxxxxxxx1',1,N'Kế Toán',33000000)
 	exec Insert_New_Assignment('xxxxxxxxx5',1,N'trợ tá-Kế hoạch',12000000)
 	exec Insert_New_Assignment('xxxxxxxxx9',1,N'khảo sát thị trường',23000000)
-	exec Insert_New_Assignment('xxxxxxxx10',1,N'Lo công tác giải phóng mặt bằng',49000000)
-	exec Insert_New_Assignment('xxxxxxxx11',1,N'Nghiên cứu thổ nhưỡng-khí hậu',480000000)
+	exec Insert_New_Assignment('xxxxxxxx10',1,N'giải phóng mặt bằng',49000000)
+	exec Insert_New_Assignment('xxxxxxxx11',1,N'Quan trắc Địa hình',480000000)
 	exec Insert_New_Assignment('xxxxxxxx24',2,'Leader',120000000)
 	exec Insert_New_Assignment('xxxxxxxx19',2,N'Kế Toán',33000000)
 	exec Insert_New_Assignment('xxxxxxxx23',2,N'trợ tá-Kế hoạch',12000000)
-	exec Insert_New_Assignment('xxxxxxxx27',2,N'Khảo sát khí hậu-thổ nhưỡng',23000000)
-	exec Insert_New_Assignment('xxxxxxxx28',2,N'Đối thoại với người dân địa phương',49000000)
+	exec Insert_New_Assignment('xxxxxxxx27',2,N'Khảo sát thổ nhưỡng',23000000)
+	exec Insert_New_Assignment('xxxxxxxx28',2,N'Dân vận',49000000)
 	exec Insert_New_Assignment('xxxxxxxx29',2,N'Vận hành máy móc',480000000)
 	exec Insert_New_Assignment('xxxxxxxx41',3,'Leader',90000000)
 	exec Insert_New_Assignment('xxxxxxxx37',3,N'Kế Toán',33000000)
 	exec Insert_New_Assignment('xxxxxxxx40',3,N'trợ tá-Kế hoạch',12000000)
-	exec Insert_New_Assignment('xxxxxxxx44',3,'',23000000)
-	exec Insert_New_Assignment('xxxxxxxx45',3,'',49000000)
-	exec Insert_New_Assignment('xxxxxxxx46',3,'',480000000)
+	exec Insert_New_Assignment('xxxxxxxx44',3,N'p/c sau nhé',23000000)
+	exec Insert_New_Assignment('xxxxxxxx45',3,N'p/c sau nhé',49000000)
+	exec Insert_New_Assignment('xxxxxxxx46',3,N'p/c sau nhé',480000000)
 	exec Insert_New_Assignment('xxxxxxxx59',4,'Leader',130000000)
 	exec Insert_New_Assignment('xxxxxxxx54',4,N'Kế Toán',33000000)
 	exec Insert_New_Assignment('xxxxxxxx58',4,N'Trợ lí kế hoạch',12000000)
-	exec Insert_New_Assignment('xxxxxxxx62',4,'',23000000)
-	exec Insert_New_Assignment('xxxxxxxx63',4,'',49000000)
-	exec Insert_New_Assignment('xxxxxxxx64',5,'',339000000)
+	exec Insert_New_Assignment('xxxxxxxx62',4,N'p/c sau nhé',23000000)
+	exec Insert_New_Assignment('xxxxxxxx63',4,N'p/c sau nhé',49000000)
+	exec Insert_New_Assignment('xxxxxxxx64',5,N'p/c sau nhé',339000000)
 	exec Insert_New_Assignment('xxxxxxxx51',5,'Asis-Leader',33000000)
 	exec Insert_New_Assignment('xxxxxxxx72',5,N'Kế Toán',12000000)
 	exec Insert_New_Assignment('xxxxxxxx76',5,N'Trợ lí kế hoạch',23000000)
 	exec Insert_New_Assignment('xxxxxxxx80',5,'Dev-1',49000000)
 	exec Insert_New_Assignment('xxxxxxxx81',5,'Dev-2',480000000)
 	exec Insert_New_Assignment('xxxxxxxx82',5,'Dev-2',480000000)
+	select count(*) from Assignment;
 	--insert into chi tiêu
 	exec Insert_New_Charge(1,'market survey',400000,1,'xxxxxxxxx9')
 	exec Insert_New_Charge(2,'food for OT',300000,1,'xxxxxxxx11')
@@ -203,11 +204,14 @@
 	exec Insert_New_Charge(4,'food for OT',360000,2,'xxxxxxxx29')
 	exec Insert_New_Charge(5,'upgrade hhd',3000000,3,'xxxxxxxx44')
 	exec Insert_New_Charge(6,'upgrade hhd',360000,3,'xxxxxxxx46')
-	exec Insert_New_Charge(7,'buy things',600000,4,'xxxxxxxx62')
-	exec Insert_New_Charge(8,'buy things',360000,4,'xxxxxxxx64')
+	exec Insert_New_Charge(7,'rent something',600000,4,'xxxxxxxx62')
+	exec Insert_New_Charge(8,'rent something',360000,4,'xxxxxxxx64')
 	exec Insert_New_Charge(9,'medical',800000,5,'xxxxxxxx80')
 	exec Insert_New_Charge(10,'medical',360000,5,'xxxxxxxx82')
-	-- Drop from Charge;
-	-- Drop from Assignment;
-	-- Drop from Project;
-	-- Drop from Staff;
+	select count(*) from Charge;
+	-- Delete from Charge;
+	-- Delete from Assignment;
+	-- Delete from Project;
+	-- Delete from Staff;
+	-- Delete from Department;
+	-- Delete from Branch;

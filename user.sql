@@ -6,21 +6,27 @@ CREATE USER xxxxxxxx63 IDENTIFIED BY "xxxxxxxx63";
 CREATE USER xxxxxxxx81 IDENTIFIED BY "xxxxxxxx81";
 
 /*trưởng phòng*/
-CREATE USER xxxxxxxxx3 IDENTIFIED BY "xxxxxxxxx3";
-CREATE USER xxxxxxxxx7 IDENTIFIED BY "xxxxxxxxx7";
-CREATE USER xxxxxxxx17 IDENTIFIED BY "xxxxxxxx17";
-CREATE USER xxxxxxxx21 IDENTIFIED BY "xxxxxxxx21";
-CREATE USER xxxxxxxx25 IDENTIFIED BY "xxxxxxxx25";
-CREATE USER xxxxxxxx35 IDENTIFIED BY "xxxxxxxx35";
-CREATE USER xxxxxxxx39 IDENTIFIED BY "xxxxxxxx39";
-CREATE USER xxxxxxxx42 IDENTIFIED BY "xxxxxxxx42";
-CREATE USER xxxxxxxx52 IDENTIFIED BY "xxxxxxxx52";
-CREATE USER xxxxxxxx56 IDENTIFIED BY "xxxxxxxx56";
-CREATE USER xxxxxxxx60 IDENTIFIED BY "xxxxxxxx60";
-CREATE USER xxxxxxxx70 IDENTIFIED BY "xxxxxxxx70";
-CREATE USER xxxxxxxx74 IDENTIFIED BY "xxxxxxxx74";
-CREATE USER xxxxxxxx78 IDENTIFIED BY "xxxxxxxx78";
-CREATE USER xxxxxxxx88 IDENTIFIED BY "xxxxxxxx88";
+-- CREATE USER xxxxxxxxx3 IDENTIFIED BY "xxxxxxxxx3";
+-- CREATE USER xxxxxxxxx7 IDENTIFIED BY "xxxxxxxxx7";
+-- CREATE USER xxxxxxxx17 IDENTIFIED BY "xxxxxxxx17";
+-- CREATE USER xxxxxxxx21 IDENTIFIED BY "xxxxxxxx21";
+-- CREATE USER xxxxxxxx25 IDENTIFIED BY "xxxxxxxx25";
+-- CREATE USER xxxxxxxx35 IDENTIFIED BY "xxxxxxxx35";
+-- CREATE USER xxxxxxxx39 IDENTIFIED BY "xxxxxxxx39";
+-- CREATE USER xxxxxxxx42 IDENTIFIED BY "xxxxxxxx42";
+-- CREATE USER xxxxxxxx52 IDENTIFIED BY "xxxxxxxx52";
+-- CREATE USER xxxxxxxx56 IDENTIFIED BY "xxxxxxxx56";
+-- CREATE USER xxxxxxxx60 IDENTIFIED BY "xxxxxxxx60";
+-- CREATE USER xxxxxxxx70 IDENTIFIED BY "xxxxxxxx70";
+-- CREATE USER xxxxxxxx74 IDENTIFIED BY "xxxxxxxx74";
+-- CREATE USER xxxxxxxx78 IDENTIFIED BY "xxxxxxxx78";
+-- CREATE USER xxxxxxxx88 IDENTIFIED BY "xxxxxxxx88";
+BEGIN
+	FOR user IN (Select depart_chief from Department)
+	LOOP
+		EXECUTE IMMEDIATE 'CREATE USER ' || user.depart_chief || ' IDENTIFIED BY ' || user.depart_chief;
+	END LOOP;
+END;
 
 /*trưởng chi nhánh*/
 CREATE USER xxxxxxxxx8 IDENTIFIED BY "xxxxxxxxx8";
@@ -43,5 +49,4 @@ CREATE USER xxxxxxxx54 IDENTIFIED BY "xxxxxxxx54";
 CREATE USER xxxxxxxx72 IDENTIFIED BY "xxxxxxxx72";
 CREATE USER xxxxxxxx90 IDENTIFIED BY "xxxxxxxx90";
 
---
 GRANT CONNECT, RESOURCE, CREATE SESSION TO PUBLIC;

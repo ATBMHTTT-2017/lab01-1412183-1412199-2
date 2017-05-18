@@ -1,5 +1,6 @@
 --TẠO USER VỚI ROlE LÀ dba---
-CREATE USER OwnerDB IDENTIFIED BY 'OwnerDB'
+drop user OwnerDB;
+CREATE USER OwnerDB IDENTIFIED BY "OwnerDB"
 DEFAULT TABLESPACE users
 TEMPORARY TABLESPACE temp
 PROFILE DEFAULT;
@@ -12,10 +13,8 @@ GRANT dba, CONNECT TO OwnerDB;
 GRANT CREATE SESSION TO OwnerDB WITH ADMIN OPTION;
 GRANT CREATE TABLE TO OwnerDB WITH ADMIN OPTION;
 GRANT CREATE VIEW TO OwnerDB WITH ADMIN OPTION;
--- GRANT CREATE ANY PROCEDURE TO OwnerDB WITH ADMIN OPTION;
--- GRANT EXECUTE ANY PROCEDURE TO OwnerDB WITH ADMIN OPTION;
-GRANT CREATE PROCEDURE TO OwnerDB;
-GRANT EXECUTE PROCEDURE TO OwnerDB;
+GRANT CREATE ANY PROCEDURE TO OwnerDB WITH ADMIN OPTION;
+GRANT EXECUTE ANY PROCEDURE TO OwnerDB WITH ADMIN OPTION;
 
 --1. nhân viên
 --DROP TABLE Staff;
@@ -30,7 +29,8 @@ CREATE TABLE Staff
     Staff_salary double PRECISION NOT NULL,
     Staff_depart int NOT NULL,
     Staff_branch int Not NUll,
-    constraint PK_Staff PRIMARY KEY (Staff_id)
+    constraint PK_Staff PRIMARY KEY (Staff_id),
+    constraint Check_Salary Check(Staff_salary >0)
 );
 
 --2. Phòng ban
@@ -43,7 +43,8 @@ CREATE TABLE Department
     Depart_branch int NOT NULL,
     Depart_Total_Staff int not null,
     Depart_chief_start_date date null,
-    constraint PK_Department PRIMARY KEY (Depart_id)
+    constraint PK_Department PRIMARY KEY (Depart_id),
+    constraint Check_Total_Staff Check(Depart_Total_Staff>=0)
 );
 -- ALTER TABLE Department
 -- MODIFY
@@ -75,7 +76,9 @@ CREATE TABLE Project
     Project_depart_host int NOT NULL,
     Project_leader CHAR(10) NOT NULL,
     Proj_total_expenditure double PRECISION NOT NULL,
-    constraint PK_Project PRIMARY KEY (Project_id)
+    constraint PK_Project PRIMARY KEY (Project_id),
+    constraint Check_budget Check(Project_budget>0),
+    constraint Check_expenditure Check(Proj_total_expenditure>=0)
 );
 
 --5. TABLE Phân công
@@ -86,7 +89,8 @@ CREATE TABLE Assignment
     Proj_id int NOT NULL,
     Position NVARCHAR2(30) NOT NULL,
     allowance double PRECISION NOT NULL,
-    constraint PK_Assignment PRIMARY KEY (Staff_id, Proj_id)
+    constraint PK_Assignment PRIMARY KEY (Staff_id, Proj_id),
+    constraint Check_allowance Check(allowance>0)
 
 );
 
@@ -99,7 +103,8 @@ CREATE TABLE Charge
     Amount double PRECISION NOT NULL,
     Proj_id int NOT NULL,
     Staff_id CHAR(10) NOT NULL,
-    constraint PK_Charge  PRIMARY KEY (Charge_id)
+    constraint PK_Charge  PRIMARY KEY (Charge_id),
+    constraint Check_Amount Check(Amount>0)
 );
 
 --FOREIGN KEY
@@ -132,3 +137,9 @@ REFERENCES Project(Project_id) on delete SET NULL;
 ALTER TABLE Charge  ADD CONSTRAINT FK_Charge_Staff FOREIGN KEY (Staff_id)
 REFERENCES Staff(Staff_id) on delete SET NULL;
 --FOREIGN KEY
+-- drop table Charge;
+-- drop table Assignment;
+-- drop table Project;
+-- drop table Staff;
+-- drop table Department;
+-- drop table Branch;

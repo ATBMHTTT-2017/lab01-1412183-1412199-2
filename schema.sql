@@ -39,7 +39,7 @@ CREATE TABLE Department
 (
     Depart_id int NOT NULL,
     Depart_name NVARCHAR2(50) NOT NULL,
-    Depart_chief CHAR(10) NOT NULL,
+    Depart_chief CHAR(10) NULL,
     Depart_branch int NOT NULL,
     Depart_Total_Staff int not null,
     Depart_chief_start_date date null,
@@ -49,7 +49,7 @@ CREATE TABLE Department
 -- ALTER TABLE Department
 -- MODIFY
 -- (
--- Depart_chief CHAR(10) NULL,
+-- Depart_chief CHAR(10) NULL
 -- );
 
 --3. Chi nhánh

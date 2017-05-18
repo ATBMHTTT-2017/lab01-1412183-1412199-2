@@ -1,4 +1,4 @@
-drop view view_project_infor;
+--drop view view_project_infor;
 CREATE VIEW view_project_infor AS
 Select 
     subquery.Proj_id as projectID,
@@ -13,15 +13,15 @@ FROM
         Branch  brc,
         Department dep,
         Staff  stf,
-     (
-        select Proj_id, SUM(Amount) as TotalSpend
-        from Charge
-        Group By Proj_id
-     )
-     subquery
+        (
+            select Proj_id, SUM(Amount) as TotalSpend
+            from Charge
+            Group By Proj_id
+         )
+         subquery
 Where
             prj.Project_depart_host = dep.depart_id AND
             dep.depart_branch = brc.branch_id AND
             prj.project_leader = stf.staff_id AND
             prj.Project_id = subquery.Proj_id;
-select * from view_project_infor;
+--select * from view_project_infor;

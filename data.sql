@@ -157,8 +157,8 @@
 	exec Update_Depart_Chief(13,'xxxxxxxx74');
 	exec Update_Depart_Chief(14,'xxxxxxxx78');
 	exec Update_Depart_Chief(15,'xxxxxxxx88');
-	select Depart_id, Depart_branch, Depart_name, Depart_Chief from Department;
--	-insert dự án
+	select Depart_id, Depart_branch, Depart_name, Depart_Total_Staff,Depart_Chief,Depart_chief_start_date from Department;
+	--insert dự án
 	exec Insert_New_Project(1,'Proj1', 900000000,2,'xxxxxxxxx6',0)
 	exec Insert_New_Project(2,'Proj2',1100000000,5,'xxxxxxxx24',0)
   	exec Insert_New_Project(3,'Proj3',1300000000,8,'xxxxxxxx41',0)
@@ -209,6 +209,7 @@
 	exec Insert_New_Charge(9,'medical',800000,5,'xxxxxxxx80')
 	exec Insert_New_Charge(10,'medical',360000,5,'xxxxxxxx82')
 	select count(*) from Charge;
+	select Project_name,Proj_total_expenditure from Project;
 	-- Delete from Charge;
 	-- Delete from Assignment;
 	-- Delete from Project;

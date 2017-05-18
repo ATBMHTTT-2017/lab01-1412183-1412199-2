@@ -6,41 +6,31 @@ CREATE USER xxxxxxxx63 IDENTIFIED BY "xxxxxxxx63";
 CREATE USER xxxxxxxx81 IDENTIFIED BY "xxxxxxxx81";
 
 /*trưởng phòng*/
--- CREATE USER xxxxxxxxx3 IDENTIFIED BY "xxxxxxxxx3";
--- CREATE USER xxxxxxxxx7 IDENTIFIED BY "xxxxxxxxx7";
--- CREATE USER xxxxxxxx17 IDENTIFIED BY "xxxxxxxx17";
--- CREATE USER xxxxxxxx21 IDENTIFIED BY "xxxxxxxx21";
--- CREATE USER xxxxxxxx25 IDENTIFIED BY "xxxxxxxx25";
--- CREATE USER xxxxxxxx35 IDENTIFIED BY "xxxxxxxx35";
--- CREATE USER xxxxxxxx39 IDENTIFIED BY "xxxxxxxx39";
--- CREATE USER xxxxxxxx42 IDENTIFIED BY "xxxxxxxx42";
--- CREATE USER xxxxxxxx52 IDENTIFIED BY "xxxxxxxx52";
--- CREATE USER xxxxxxxx56 IDENTIFIED BY "xxxxxxxx56";
--- CREATE USER xxxxxxxx60 IDENTIFIED BY "xxxxxxxx60";
--- CREATE USER xxxxxxxx70 IDENTIFIED BY "xxxxxxxx70";
--- CREATE USER xxxxxxxx74 IDENTIFIED BY "xxxxxxxx74";
--- CREATE USER xxxxxxxx78 IDENTIFIED BY "xxxxxxxx78";
--- CREATE USER xxxxxxxx88 IDENTIFIED BY "xxxxxxxx88";
+--3,7,17,21,25,35,39,42,52,56,60,70,74,78,88;
 BEGIN
-	FOR user IN (Select depart_chief from Department)
+	FOR chief IN (Select depart_chief from Department)
 	LOOP
-		EXECUTE IMMEDIATE 'CREATE USER ' || user.depart_chief || ' IDENTIFIED BY ' || user.depart_chief;
+		EXECUTE IMMEDIATE 'CREATE USER ' || chief.depart_chief || ' IDENTIFIED BY ' || chief.depart_chief;
 	END LOOP;
 END;
 
 /*trưởng chi nhánh*/
-CREATE USER xxxxxxxxx8 IDENTIFIED BY "xxxxxxxxx8";
-CREATE USER xxxxxxxx26 IDENTIFIED BY "xxxxxxxx26";
-CREATE USER xxxxxxxx43 IDENTIFIED BY "xxxxxxxx43";
-CREATE USER xxxxxxxx61 IDENTIFIED BY "xxxxxxxx61";
-CREATE USER xxxxxxxx79 IDENTIFIED BY "xxxxxxxx79";
+--8,26,43,61,79
+BEGIN
+	FOR drt IN (Select Branch_director from Branch)
+	LOOP
+		EXECUTE IMMEDIATE 'CREATE USER ' || drt.Branch_director || ' IDENTIFIED BY ' || drt.Branch_director;
+	END LOOP;
+END;
 
 /*trưởng dự án*/
-CREATE USER xxxxxxxxx6 IDENTIFIED BY "xxxxxxxxx6";
-CREATE USER xxxxxxxx24 IDENTIFIED BY "xxxxxxxx24";
-CREATE USER xxxxxxxx41 IDENTIFIED BY "xxxxxxxx41";
-CREATE USER xxxxxxxx59 IDENTIFIED BY "xxxxxxxx59";
-CREATE USER xxxxxxxx77 IDENTIFIED BY "xxxxxxxx77";
+--6,24,41,59,77
+BEGIN
+	FOR ldr IN (Select Project_leader from Project)
+	LOOP
+		EXECUTE IMMEDIATE 'CREATE USER ' || ldr.Project_leader || ' IDENTIFIED BY ' || ldr.Project_leader;
+	END LOOP;
+END;
 
 /*Giám đốc*/
 CREATE USER xxxxxxxx18 IDENTIFIED BY "xxxxxxxx18";

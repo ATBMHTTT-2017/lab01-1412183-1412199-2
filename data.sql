@@ -177,10 +177,10 @@
 
 --(Phòng Nhân sự, Chi Nhánh Hà Nội) => (15,5)
 -- co 4 nhân viên
-    execute Insert_New_Staff('xxxxxxxx81', 'Jacqueline', NULL, '096xxxxxxx', 16000000, 15,sysdate, 5);
-    execute Insert_New_Staff('xxxxxxxx82', 'Ruby', NULL, '099xxxxxx1', 28000000,  15, sysdate,5);
+  	execute Insert_New_Staff('xxxxxxxx81', 'Jacqueline', NULL, '096xxxxxxx', 16000000, 15,sysdate, 5);
+  	execute Insert_New_Staff('xxxxxxxx82', 'Ruby', NULL, '099xxxxxx1', 28000000,  15, sysdate,5);
 	execute Insert_New_Staff('xxxxxxxx83', 'Tina', NULL, '0168xxxxxx0', 13000000, 15,sysdate, 5);
-    execute Insert_New_Staff('xxxxxxxx84', 'Annie', NULL, '0168xxxxxxx', 13000000,  15, sysdate,5);
+  	execute Insert_New_Staff('xxxxxxxx84', 'Annie', NULL, '0168xxxxxxx', 13000000,  15, sysdate,5);
 	execute Insert_New_Staff('xxxxxxxx85', 'Emily', NULL, '098xxxxxxx', 14000000,  15,sysdate, 5);
 	execute Insert_New_Staff('xxxxxxxx86', 'Crystal', NULL, '096xxxxxxx', 16000000,  15, sysdate,5);
 	execute Insert_New_Staff('xxxxxxxx87', 'Connie', NULL, '099xxxxxx1', 28000000,  15, sysdate,5);
@@ -193,56 +193,39 @@
 
 -- cập nhật các trưởng chi nhánh-chọn giám đốc phòng kế hoạch làm trưởng chi nhánh
 --trưởng chi nhánh Cần Thơ là giám đốc phòng Kế Hoạch
-exec Update_Branch_Director(1,'xxxxxxxxx8');
-exec Update_Branch_Director(2,'xxxxxxxx26');
-exec Update_Branch_Director(3,'xxxxxxxx43');
-exec Update_Branch_Director(4,'xxxxxxxx61');
-exec Update_Branch_Director(5,'xxxxxxxx79');
-select Branch_director as truongchinhanh, Branch_name as chinhanh from Branch;
+	exec Update_Branch_Director(1,'xxxxxxxxx8');
+	exec Update_Branch_Director(2,'xxxxxxxx26');
+	exec Update_Branch_Director(3,'xxxxxxxx43');
+	exec Update_Branch_Director(4,'xxxxxxxx61');
+	exec Update_Branch_Director(5,'xxxxxxxx79');
+	select Branch_director as truongchinhanh, Branch_name as chinhanh from Branch;
 --cập nhật trưởng phòng-
-exec Update_Depart_Chief(1,'xxxxxxxxx3');
--- update Department set Depart_chief = 'xxxxxxxxx3',Depart_chief_start_date =sysdate where Depart_id = 1;
-exec Update_Depart_Chief(2,'xxxxxxxxx7');
--- update Department set Depart_chief = 'xxxxxxxxx7',Depart_chief_start_date =sysdate where Depart_id = 2;
-exec Update_Depart_Chief(3,'xxxxxxxx17');
--- update Department set Depart_chief = 'xxxxxxxx17',Depart_chief_start_date =sysdate where Depart_id = 3;
-exec Update_Depart_Chief(4,'xxxxxxxx21');
--- update Department set Depart_chief = 'xxxxxxxx21',Depart_chief_start_date =sysdate where Depart_id = 4;
-exec Update_Depart_Chief(5,'xxxxxxxx25');
--- update Department set Depart_chief = 'xxxxxxxx25',Depart_chief_start_date =sysdate where Depart_id = 5;
-exec Update_Depart_Chief(6,'xxxxxxxx35');
--- update Department set Depart_chief = 'xxxxxxxx35',Depart_chief_start_date =sysdate where Depart_id = 6;
-exec Update_Depart_Chief(7,'xxxxxxxx39');
--- update Department set Depart_chief = 'xxxxxxxx39',Depart_chief_start_date =sysdate where Depart_id = 7;
-exec Update_Depart_Chief(8,'xxxxxxxx42');
--- update Department set Depart_chief = 'xxxxxxxx42',Depart_chief_start_date =sysdate where Depart_id = 8;
-exec Update_Depart_Chief(9,'xxxxxxxx52');
--- update Department set Depart_chief = 'xxxxxxxx52',Depart_chief_start_date =sysdate where Depart_id = 9;
-exec Update_Depart_Chief(10,'xxxxxxxx56');
--- update Department set Depart_chief = 'xxxxxxxx56',Depart_chief_start_date =sysdate where Depart_id = 10;
-exec Update_Depart_Chief(11,'xxxxxxxx60');
--- update Department set Depart_chief = 'xxxxxxxx60',Depart_chief_start_date =sysdate where Depart_id = 11;
-exec Update_Depart_Chief(12,'xxxxxxxx70');
--- update Department set Depart_chief = 'xxxxxxxx70',Depart_chief_start_date =sysdate where Depart_id = 12;
-exec Update_Depart_Chief(13,'xxxxxxxx74');
--- update Department set Depart_chief = 'xxxxxxxx74',Depart_chief_start_date =sysdate where Depart_id = 13;
-exec Update_Depart_Chief(14,'xxxxxxxx78');
--- update Department set Depart_chief = 'xxxxxxxx78',Depart_chief_start_date =sysdate where Depart_id = 14;
-exec Update_Depart_Chief(15,'xxxxxxxx88');
--- update Department set Depart_chief = 'xxxxxxxx88',Depart_chief_start_date =sysdate where Depart_id = 15;
+	exec Update_Depart_Chief(1,'xxxxxxxxx3');
+	exec Update_Depart_Chief(2,'xxxxxxxxx7');
+	exec Update_Depart_Chief(3,'xxxxxxxx17');
+	exec Update_Depart_Chief(4,'xxxxxxxx21');
+	exec Update_Depart_Chief(5,'xxxxxxxx25');
+	exec Update_Depart_Chief(6,'xxxxxxxx35');
+	exec Update_Depart_Chief(7,'xxxxxxxx39');
+	exec Update_Depart_Chief(8,'xxxxxxxx42');
+	exec Update_Depart_Chief(9,'xxxxxxxx52');
+	exec Update_Depart_Chief(10,'xxxxxxxx56');
+	exec Update_Depart_Chief(11,'xxxxxxxx60');
+	exec Update_Depart_Chief(12,'xxxxxxxx70');
+	exec Update_Depart_Chief(13,'xxxxxxxx74');
+	exec Update_Depart_Chief(14,'xxxxxxxx78');
+	exec Update_Depart_Chief(15,'xxxxxxxx88');
 
 --insert dự án
-insert all
 	exec Insert_New_Project(1,'Proj1',  900000000, 2, 'xxxxxxxxx6', 180000000 )
 	exec Insert_New_Project(2,'Proj2', 1100000000, 5, 'xxxxxxxx24', 600000000 )
-    exec Insert_New_Project(3,'Proj3', 1300000000, 8, 'xxxxxxxx41', 339000000)
-	exec Insert_New_Project(4,'Proj4', 2200000000, 11, 'xxxxxxxx59', 800000000 )
-	exec Insert_New_Project(5,'Proj5', 4600000000, 14, 'xxxxxxxx77', 456000000 )
+  	exec Insert_New_Project(3,'Proj3', 1300000000, 8, 'xxxxxxxx41', 339000000)
+	exec Insert_New_Project(4,'Proj4', 2200000000, 11,'xxxxxxxx59', 800000000 )
+	exec Insert_New_Project(5,'Proj5', 4600000000, 14,'xxxxxxxx77', 456000000 )
 
 
 --insert phân công
-insert all
-		exec Insert_New_Assignment('xxxxxxxxx6', 1,'Leader', 100000000)
+	exec Insert_New_Assignment('xxxxxxxxx6', 1,'Leader', 100000000)
 	exec Insert_New_Assignment('xxxxxxxxx1', 1,N'Kế Toán', 33000000)
 	exec Insert_New_Assignment('xxxxxxxxx5', 1,N'trợ tá-Kế hoạch', 12000000)
 	exec Insert_New_Assignment('xxxxxxxxx9', 1,N'khảo sát thị trường', 23000000)
@@ -279,7 +262,6 @@ insert all
 
 
 --insert into chi tiêu
-insert all
 	exec Insert_New_Charge(1, 'market survey', 400000,1, 'xxxxxxxxx9')
 	exec Insert_New_Charge(2, 'food for OT', 300000,1, 'xxxxxxxx11')
 	exec Insert_New_Charge(3, 'food for OT', 100000,2, 'xxxxxxxx27')
@@ -291,3 +273,7 @@ insert all
 	exec Insert_New_Charge(9, 'medical', 800000,5, 'xxxxxxxx80')
 	exec Insert_New_Charge(10, 'medical', 360000,5,'xxxxxxxx82')
 
+-- Drop from Charge;
+-- Drop from Assignment;
+-- Drop from Project;
+-- Drop from Staff;

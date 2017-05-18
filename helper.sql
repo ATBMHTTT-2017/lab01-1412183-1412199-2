@@ -131,12 +131,12 @@ COMMIT;
 COMMIT;
  END;
 
- 
+
 --9
 --drop Procedure Insert_New_Staff;
 Create or Replace Procedure Insert_New_Staff
 (
-	stf_id Staff.Staff_id%TYPE,
+	  stf_id Staff.Staff_id%TYPE,
     stf_name Staff.Staff_name%TYPE,
     stf_addr Staff.Staff_addr%TYPE,
     stf_phoneNumber Staff.Staff_phoneNumber%TYPE,
@@ -147,27 +147,29 @@ Create or Replace Procedure Insert_New_Staff
 )
 IS success_flag BOOLEAN;
 BEGIN
+success_flag := true;
 --SAVEPOINT sp_sptest;
-insert into Staff(Staff_id,
-				 Staff_name,
-				 Staff_addr,
-				 Staff_phoneNumber,
-				 Staff_salary,
-				 Staff_depart,
-				 Staff_date_joint,
-				 Staff_branch
-				)
-
-			VALUES
-		      	 (stf_id,
-		      	  stf_name,
-		      	  stf_addr,
-		      	  stf_phoneNumber,
-		      	  stf_salary,
-		      	  stf_depart,
-		      	  stf_date_joint,
-		      	  stf_branch
-		      	  );
+insert into Staff(
+                  Staff_id,
+				          Staff_name,
+				          Staff_addr,
+				          Staff_phoneNumber,
+				          Staff_salary,
+				          Staff_depart,
+				          Staff_date_joint,
+				          Staff_branch
+				         )
+			   VALUES
+    		      	 (
+                  stf_id,
+    		      	  stf_name,
+    		      	  stf_addr,
+    		      	  stf_phoneNumber,
+    		      	  stf_salary,
+    		      	  stf_depart,
+    		      	  stf_date_joint,
+    		      	  stf_branch
+    		      	  );
 
 EXCEPTION
 WHEN OTHERS THEN
@@ -179,4 +181,3 @@ IF success_flag THEN
 Update_Depart_Total_Staff(stf_depart);
  END IF;
  END;
- 

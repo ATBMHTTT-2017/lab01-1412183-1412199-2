@@ -132,17 +132,17 @@ COMMIT;
  --8 Thêm mới 1 chiêu tiêu
  Create or Replace Procedure Insert_New_Charge
  (
-	Charge_id  Charge.Charge_id%TYPE,
- 	Charge_for Charge.Charge_for%TYPE,
- 	Amount Charge.Amount%TYPE,
- 	Proj_id Charge.Proj_id%TYPE,
- 	Staff_id Charge.Staff_id%TYPE
+	Ch_id  Charge.Charge_id%TYPE,
+ 	Ch_for Charge.Charge_for%TYPE,
+ 	Amnt Charge.Amount%TYPE,
+ 	Pr_id Charge.Proj_id%TYPE,
+ 	Stf_id Charge.Staff_id%TYPE
  )
  IS success_flag BOOLEAN;
  BEGIN
  success_flag := true;
  insert into Charge (Charge_id, Charge_for , Amount, Proj_id, Staff_id)
-		 VALUES(Charge_id,Charge_for, Amount, Proj_id, Staff_id);
+		 VALUES(Ch_id,Ch_for, Amnt, Pr_id, Stf_id);
 EXCEPTION
 WHEN OTHERS THEN
  success_flag := false;
@@ -150,7 +150,7 @@ WHEN OTHERS THEN
 --ROLLBACK TO sp_sptest;
 ROLLBACK ;
 IF success_flag THEN
-Update_Proj_total_expenditure(Proj_id, Amount);
+Update_Proj_total_expenditure(Pr_id, Amnt);
  END IF;
  END;
 

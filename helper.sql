@@ -1,4 +1,4 @@
---1
+--1 thêm mới 1 chi nhánh
  Create or Replace Procedure Insert_New_Branch
  (
  	Branch_id  Branch.Branch_id%TYPE,
@@ -14,7 +14,7 @@ COMMIT;
  END;
 
 
- --2
+ --2 thêm mới Phòng Ban
  Create or Replace Procedure Insert_New_Department
  (
 	 Depart_id Department.Depart_id%TYPE,
@@ -32,7 +32,7 @@ Commit;
  END;
 
 
- --3
+ --3 Cập nhật Trưởng chi nhánh
  Create or Replace Procedure Update_Branch_Director
  (
 	Br_id  Branch.Branch_id%TYPE,
@@ -48,7 +48,7 @@ COMMIT;
  END;
 
 
- --4
+ --4 Cập nhật trưởng phòng
  Create or Replace Procedure Update_Depart_Chief
  (
 	Drt_id Department.Depart_id%TYPE,
@@ -64,7 +64,7 @@ COMMIT;
  END;
 
 
- --5
+ --5 Cập nhật số lượng nhân viên trong mỗi khi chèn thêm 1 nhân viên mới
 Create or Replace Procedure Update_Depart_Total_Staff
  (
 	dp_id Department.Depart_id%TYPE
@@ -81,7 +81,7 @@ COMMIT;
  END;
 
 
---6
+--6 Thêm mới 1 dự án
 Create or Replace Procedure Insert_New_Project
  (
 	 Project_id Project.Project_id%TYPE,
@@ -99,7 +99,7 @@ COMMIT;
  END;
 
 
- --7
+ --7 Thêm mới 1 phân công
  Create or Replace Procedure Insert_New_Assignment
  (
 	 Staff_id Assignment.Staff_id%TYPE,
@@ -115,7 +115,7 @@ COMMIT;
  END;
 
 
- --8
+ --8 Thêm mới 1 chiêu tiêu
  Create or Replace Procedure Insert_New_Charge
  (
 	Charge_id  Charge.Charge_id%TYPE,
@@ -124,15 +124,24 @@ COMMIT;
  	Proj_id Charge.Proj_id%TYPE,
  	Staff_id Charge.Staff_id%TYPE
  )
- IS
+ IS success_flag BOOLEAN;
  BEGIN
+ success_flag := true;
  insert into Charge (Charge_id, Charge_for , Amount, Proj_id, Staff_id)
 		 VALUES(Charge_id,Charge_for, Amount, Proj_id, Staff_id);
-COMMIT;
+EXCEPTION
+WHEN OTHERS THEN
+ success_flag := false;
+ raise_application_error(-20001,'An error was encountered - '||SQLCODE||' -ERROR- '||SQLERRM);
+--ROLLBACK TO sp_sptest;
+ROLLBACK ;
+IF success_flag THEN
+Update_Proj_total_expenditure(Proj_id, Amount);
+ END IF;
  END;
 
 
---9
+--9 Thêm mới 1 nhân viên
 --drop Procedure Insert_New_Staff;
 Create or Replace Procedure Insert_New_Staff
 (
@@ -180,4 +189,20 @@ ROLLBACK ;
 IF success_flag THEN
 Update_Depart_Total_Staff(stf_depart);
  END IF;
+ END;
+--10  cập nhật tổng chi tiêu trong dự án khi chèn mới 1 chi tiêu
+Create or Replace Procedure Update_Proj_total_expenditure
+ (
+	Pr_id Project.Project_id%TYPE,
+	Amount Project.Proj_total_expenditure%TYPE
+ )
+ IS old_expenditure double PRECISION;
+ BEGIN
+ select Proj_total_expenditure into old_expenditure
+ 	from Project
+ 	where Project_id = Pr_id;
+ update Department
+	 set Proj_total_expenditure = old_expenditure+Amount
+where Project_id = Pr_id;
+COMMIT;
  END;

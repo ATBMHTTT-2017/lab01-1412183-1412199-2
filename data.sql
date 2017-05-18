@@ -159,11 +159,11 @@
 	exec Update_Depart_Chief(15,'xxxxxxxx88');
 	select Depart_id, Depart_branch, Depart_name, Depart_Chief from Department;
 -	-insert dự án
-	exec Insert_New_Project(1,'Proj1', 900000000,2,'xxxxxxxxx6',180000000 )
-	exec Insert_New_Project(2,'Proj2',1100000000,5,'xxxxxxxx24',600000000 )
-  	exec Insert_New_Project(3,'Proj3',1300000000,8,'xxxxxxxx41',339000000)
-	exec Insert_New_Project(4,'Proj4',2200000000,11,'xxxxxxxx59',800000000 )
-	exec Insert_New_Project(5,'Proj5',4600000000,14,'xxxxxxxx77',456000000 )
+	exec Insert_New_Project(1,'Proj1', 900000000,2,'xxxxxxxxx6',0)
+	exec Insert_New_Project(2,'Proj2',1100000000,5,'xxxxxxxx24',0)
+  	exec Insert_New_Project(3,'Proj3',1300000000,8,'xxxxxxxx41',0)
+	exec Insert_New_Project(4,'Proj4',2200000000,11,'xxxxxxxx59',0)
+	exec Insert_New_Project(5,'Proj5',4600000000,14,'xxxxxxxx77',0)
 	select count(*) from Project;
 	--insert phân công
 	exec Insert_New_Assignment('xxxxxxxxx6',1,'Leader',100000000)

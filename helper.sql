@@ -150,7 +150,7 @@ BEGIN
 success_flag := true;
 --SAVEPOINT sp_sptest;
 insert into Staff(
-                  Staff_id,
+                  		  Staff_id,
 				          Staff_name,
 				          Staff_addr,
 				          Staff_phoneNumber,
@@ -161,7 +161,7 @@ insert into Staff(
 				         )
 			   VALUES
     		      	 (
-                  stf_id,
+                  	  stf_id,
     		      	  stf_name,
     		      	  stf_addr,
     		      	  stf_phoneNumber,

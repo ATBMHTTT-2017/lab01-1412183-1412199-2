@@ -1,6 +1,6 @@
 /*trưởng phòng*/
 CREATE ROLE depart_chief;
-GRANT UPDATE ON Project to depart_chief;
+GRANT UPDATE, INSERT ON Project to depart_chief;
 --cấp role cho các user trưởng phòng
 BEGIN
 FOR chief in (select depart_chief from Department)
@@ -9,7 +9,7 @@ LOOP
 END LOOP;
 END;
 --test case:
---update Project set Proj_total_expenditure= 21230000 where Project_id=1;
+--update OwnerDB.Project set Proj_total_expenditure= 21230000 where Project_id=1;
 /*giám đốc*/
 CREATE ROLE Director;
 Grant select on OwnerDB.view_project_infor to Director;

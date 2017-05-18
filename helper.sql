@@ -1,3 +1,35 @@
+--5 Cập nhật số lượng nhân viên trong mỗi khi chèn thêm 1 nhân viên mới
+Create or Replace Procedure Update_Depart_Total_Staff
+ (
+	dp_id Department.Depart_id%TYPE
+ )
+ IS old_total int;
+ BEGIN
+ select Depart_Total_Staff into old_total
+ 	from Department
+ 	where Depart_id = dp_id;
+ update Department
+	 set Depart_Total_Staff = old_total+1
+where Depart_id = dp_id;
+COMMIT;
+ END;
+
+--10  cập nhật tổng chi tiêu trong dự án khi chèn mới 1 chi tiêu
+Create or Replace Procedure Update_Proj_total_expenditure
+ (
+	Pr_id Project.Project_id%TYPE,
+	Amount Project.Proj_total_expenditure%TYPE
+ )
+ IS old_expenditure double PRECISION;
+ BEGIN
+ select Proj_total_expenditure into old_expenditure
+ 	from Project
+ 	where Project_id = Pr_id;
+ update Project
+	 set Proj_total_expenditure = old_expenditure+Amount
+where Project_id = Pr_id;
+COMMIT;
+ END;
 --1 thêm mới 1 chi nhánh
  Create or Replace Procedure Insert_New_Branch
  (
@@ -62,24 +94,6 @@ COMMIT;
 where Depart_id = Drt_id;
 COMMIT;
  END;
-
-
- --5 Cập nhật số lượng nhân viên trong mỗi khi chèn thêm 1 nhân viên mới
-Create or Replace Procedure Update_Depart_Total_Staff
- (
-	dp_id Department.Depart_id%TYPE
- )
- IS old_total int;
- BEGIN
- select Depart_Total_Staff into old_total
- 	from Department
- 	where Depart_id = dp_id;
- update Department
-	 set Depart_Total_Staff = old_total+1
-where Depart_id = dp_id;
-COMMIT;
- END;
-
 
 --6 Thêm mới 1 dự án
 Create or Replace Procedure Insert_New_Project
@@ -189,20 +203,4 @@ ROLLBACK ;
 IF success_flag THEN
 Update_Depart_Total_Staff(stf_depart);
  END IF;
- END;
---10  cập nhật tổng chi tiêu trong dự án khi chèn mới 1 chi tiêu
-Create or Replace Procedure Update_Proj_total_expenditure
- (
-	Pr_id Project.Project_id%TYPE,
-	Amount Project.Proj_total_expenditure%TYPE
- )
- IS old_expenditure double PRECISION;
- BEGIN
- select Proj_total_expenditure into old_expenditure
- 	from Project
- 	where Project_id = Pr_id;
- update Department
-	 set Proj_total_expenditure = old_expenditure+Amount
-where Project_id = Pr_id;
-COMMIT;
  END;

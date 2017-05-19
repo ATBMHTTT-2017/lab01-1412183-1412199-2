@@ -1,7 +1,10 @@
+/*Nhân viên thường*/
+CREATE ROLE Normal_Staff;
+GRANT Normal_Staff TO xxxxxxxxx9, xxxxxxxx27, xxxxxxxx45, xxxxxxxx63, xxxxxxxx81;
 /*trưởng phòng*/
 CREATE ROLE depart_chief;
 GRANT UPDATE, INSERT ON Project to depart_chief;
---cấp role cho các user trưởng phòng
+--cấp role depart_chief cho các user trưởng phòng
 BEGIN
 FOR chief in (select depart_chief from Department)
 LOOP
@@ -18,11 +21,11 @@ GRANT Director to xxxxxxxx18, xxxxxxxx36, xxxxxxxx54, xxxxxxxx72, xxxxxxxx90;
 --select * from OwnerDB.View_Project_Infor;
 /*trưởng dự án*/
 CREATE ROLE Project_Leader;
-GRANT ... to ...;
+GRANT ... to Project_Leader;
 BEGIN
 FOR ldr  in (select Project_leader from Project)
 LOOP
-	execute IMMEDIATE 'GRANT depart_chief to ' || ldr.Project_leader;
+	execute IMMEDIATE 'GRANT Project_Leader to ' || ldr.Project_leader;
 END LOOP;
 END;
 /*trưởng chi nhánh*/

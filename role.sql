@@ -1,6 +1,9 @@
 /*Nhân viên thường*/
+Drop ROLE Normal_Staff;
 CREATE ROLE Normal_Staff;
+grant select ON Staff to Normal_Staff;
 GRANT Normal_Staff TO xxxxxxxxx9, xxxxxxxx27, xxxxxxxx45, xxxxxxxx63, xxxxxxxx81;
+select * from  OwnerDB.Staff;
 /*trưởng phòng*/
 CREATE ROLE depart_chief;
 GRANT SELECT, UPDATE, INSERT ON OwnerDB.Project to depart_chief;
@@ -31,10 +34,10 @@ END LOOP;
 END;
 /*trưởng chi nhánh*/
 CREATE ROLE Branch_Director;
---GRANT Branch_Director to xxxxxxxxx9;
+	--GRANT Branch_Director to xxxxxxxxx9;
 BEGIN
 FOR drt in (select Branch_Director from Branch)
-LOOP
-	execute IMMEDIATE 'GRANT Branch_Director to ' || drt.Branch_Director;
+	LOOP
+		execute IMMEDIATE 'GRANT Branch_Director to ' || drt.Branch_Director;
 END LOOP;
 END;

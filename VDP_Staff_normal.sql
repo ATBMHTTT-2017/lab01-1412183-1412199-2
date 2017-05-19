@@ -6,24 +6,37 @@ p_schema IN VARCHAR2 DEFAULT NULL,
 p_object IN VARCHAR2 DEFAULT NULL)
 RETURN VARCHAR2 
 AS
+stf_id char(10);
 num number;
+dp_id int;
 BEGIN
   if(SYS_CONTEXT('userenv', 'ISDBA'))
   then
   	return '';
   else
-  	user := SYS_CONTEXT('userenv', 'SESSION_USER');
-  Select count (*) into num from PhongBan, ChiNhanh, DuAn where user = truongPhong or user = truongChiNhanh or user = truongDA;
+  	stf_id := SYS_CONTEXT('userenv', 'SESSION_USER');
+  Select count (*) into num from Department, Branch, Project where stf_id = Depart_chief or stf_id = Branch_director or stf_id = Project_leader;
   if (num > 0) then
   RETURN '';
   ELSE
-  RETURN 'Staff_id' || user;
+  Select Depart_id into dp_id from Staff where staff_id = user;
+  RETURN 'Depart_id = ' || dp_id;
   END IF;
-EXCEPTION
-      WHEN OTHERS THEN RETURN '1 = 0';
+-- EXCEPTION
+--       WHEN OTHERS THEN RETURN '1 = 0';
 END;
 
 --Gan ham vao chinh sach
+-- BEGIN
+-- DBMS_RLS.add_policy
+-- (object_schema => 'OwnerDB',
+-- object_name => 'Staff',
+-- policy_name => 'S_Staff',
+-- function_schema => 'OwnerDB',
+-- policy_function => 'Select_Staff',
+-- sec_relevant_cols=>'Staff_Salary',
+-- sec_relevant_cols_opt=>dbms_rls.ALL_ROWS);
+-- END;
 BEGIN
 DBMS_RLS.add_policy
 (object_schema => 'OwnerDB',
@@ -31,8 +44,8 @@ object_name => 'Staff',
 policy_name => 'S_Staff',
 function_schema => 'OwnerDB',
 policy_function => 'Select_Staff',
-sec_relevant_cols=>'Staff_Salary',
-sec_relevant_cols_opt=>dbms_rls.ALL_ROWS);
+statement_types => 'SELECT'
+)
 END;
 
 --Xoa ham 

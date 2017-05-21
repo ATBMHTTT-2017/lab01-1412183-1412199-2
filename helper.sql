@@ -18,7 +18,7 @@ COMMIT;
 Create or Replace Procedure Update_Proj_total_expenditure
  (
 	Pr_id Project.Project_id%TYPE,
-	Amount Project.Proj_total_expenditure%TYPE
+	Amount Charge.Amount%TYPE
  )
  IS old_expenditure double PRECISION;
  BEGIN
@@ -138,20 +138,21 @@ COMMIT;
  	Pr_id Charge.Proj_id%TYPE,
  	Stf_id Charge.Staff_id%TYPE
  )
- IS success_flag BOOLEAN;
+ IS 
+ -- success_flag BOOLEAN;
  BEGIN
- success_flag := true;
+ -- success_flag := true;
  insert into Charge (Charge_id, Charge_for , Amount, Proj_id, Staff_id)
 		 VALUES(Ch_id,Ch_for, Amnt, Pr_id, Stf_id);
-EXCEPTION
-WHEN OTHERS THEN
- success_flag := false;
- raise_application_error(-20001,'An error was encountered - '||SQLCODE||' -ERROR- '||SQLERRM);
---ROLLBACK TO sp_sptest;
-ROLLBACK ;
-IF success_flag THEN
+-- EXCEPTION
+-- WHEN OTHERS THEN
+--  success_flag := false;
+--  raise_application_error(-20001,'An error was encountered - '||SQLCODE||' -ERROR- '||SQLERRM);
+-- --ROLLBACK TO sp_sptest;
+-- ROLLBACK ;
+-- IF success_flag THEN
 Update_Proj_total_expenditure(Pr_id, Amnt);
- END IF;
+ -- END IF;
  END;
 
 
@@ -168,9 +169,10 @@ Create or Replace Procedure Insert_New_Staff
     stf_date_joint Staff.Staff_date_joint%TYPE,
     stf_branch Staff.Staff_branch%TYPE
 )
-IS success_flag BOOLEAN;
+IS
+-- success_flag BOOLEAN;
 BEGIN
-success_flag := true;
+--success_flag := true;
 --SAVEPOINT sp_sptest;
 insert into Staff(
                   		  Staff_id,
@@ -194,13 +196,13 @@ insert into Staff(
     		      	  stf_branch
     		      	  );
 
-EXCEPTION
-WHEN OTHERS THEN
- success_flag := false;
- raise_application_error(-20001,'An error was encountered - '||SQLCODE||' -ERROR- '||SQLERRM);
---ROLLBACK TO sp_sptest;
-ROLLBACK ;
-IF success_flag THEN
+-- EXCEPTION
+-- WHEN OTHERS THEN
+--  success_flag := false;
+--  raise_application_error(-20001,'An error was encountered - '||SQLCODE||' -ERROR- '||SQLERRM);
+-- --ROLLBACK TO sp_sptest;
+-- ROLLBACK ;
+-- IF success_flag THEN
 Update_Depart_Total_Staff(stf_depart);
- END IF;
+ -- END IF;
  END;

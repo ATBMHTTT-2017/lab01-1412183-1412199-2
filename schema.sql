@@ -1,5 +1,5 @@
 --TẠO USER VỚI ROlE LÀ dba---
-drop user OwnerDB;
+--drop user OwnerDB;
 CREATE USER OwnerDB IDENTIFIED BY "OwnerDB"
 DEFAULT TABLESPACE users
 TEMPORARY TABLESPACE temp
@@ -15,6 +15,10 @@ GRANT CREATE TABLE TO OwnerDB WITH ADMIN OPTION;
 GRANT CREATE VIEW TO OwnerDB WITH ADMIN OPTION;
 GRANT CREATE ANY PROCEDURE TO OwnerDB WITH ADMIN OPTION;
 GRANT EXECUTE ANY PROCEDURE TO OwnerDB WITH ADMIN OPTION;
+grant execute on dbms_rls to OwnerDB;
+GRANT exempt access policy to OwnerDB;
+GRANT CREATE ANY CONTEXT to OwnerDB;
+
 
 --1. nhân viên
 --DROP TABLE Staff;
@@ -120,7 +124,7 @@ ALTER TABLE Department ADD CONSTRAINT FK_Department_Depart_chief FOREIGN KEY (De
 REFERENCES Staff(Staff_id) on delete SET NULL;
 --3 Branch
 ALTER TABLE Branch ADD CONSTRAINT FK_Branch_director FOREIGN KEY (Branch_director)
-REFERENCES Staff(Staff_id) on delete SET NULL
+REFERENCES Staff(Staff_id) on delete SET NULL;
 --4. Project
 ALTER TABLE Project ADD CONSTRAINT FK_Project_Depart_host FOREIGN KEY (Project_depart_host)
 REFERENCES Department(Depart_id) on delete SET NULL;

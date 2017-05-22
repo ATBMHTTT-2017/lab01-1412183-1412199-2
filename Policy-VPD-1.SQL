@@ -1,8 +1,8 @@
---6.Tất cả nhân viên bình thường (trừ trưởng phòng, trưởng chi nhánh và các trưởng dự án) chỉ được phép xem thông tin nhân viên 
+--Tất cả nhân viên bình thường (trừ trưởng phòng, trưởng chi nhánh và các trưởng dự án) chỉ được phép xem thông tin nhân viên 
 --trong phòng của mình, chỉ được xem lương của bản thân.
 
 --xem cùng phòng func
-CREATE FUNCTION vpd_nhanvien
+CREATE FUNCTION vpd_sameDepart
 (
   p_schema VARCHAR2 DEFAULT NULL,
   p_object VARCHAR2 DEFAULT NULL
@@ -10,12 +10,12 @@ CREATE FUNCTION vpd_nhanvien
 RETURN VARCHAR2
 AS
  TEMP VARCHAR2(100);
-  MaPhong Staff.Staff_depart%TYPE;
-  --MaPhong VARCHAR2(10)
+  dp_ip Staff.Staff_depart%TYPE;
+  --dp_ip VARCHAR2(10)
 BEGIN
-    SELECT Staff_depart INTO MaPhong FROM Staff WHERE staff_id=SYS_CONTEXT('USERENV','SESSION_USER');
-    -- RETURN 'Staff_depart= '||TO_CHAR(MaPhong);
-    TEMP := 'Staff_depart = ''' || TO_CHAR(MaPhong)||'''';  
+    SELECT Staff_depart INTO dp_ip FROM Staff WHERE staff_id=SYS_CONTEXT('USERENV','SESSION_USER');
+    -- RETURN 'Staff_depart= '||TO_CHAR(dp_ip);
+    TEMP := 'Staff_depart = ''' || TO_CHAR(dp_ip)||'''';  
     RETURN TEMP;
 END;
 
@@ -25,7 +25,7 @@ BEGIN DBMS_RLS.add_policy
 (object_schema => 'OwnerDB',
 object_name => 'Staff',
 policy_name => 'XemTTNVien',
-policy_function => 'vpd_nhanvien');
+policy_function => 'vpd_sameDepart');
 END;
 
 
@@ -73,7 +73,7 @@ END;
 
 --drop
 drop FUNCTION user_only;
-drop FUNCTION vpd_nhanvien;
+drop FUNCTION vpd_sameDepart;
 
 
 grant select on Staff to Normal_Staff;

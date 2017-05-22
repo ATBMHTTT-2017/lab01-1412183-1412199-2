@@ -1,5 +1,5 @@
---VP2:Truong Du An chi duoc phep doc, ghi thong tin chi tieu cua du an minh quan ly
---Tao ham chinh sach cho VP2
+--Truong Du An chi duoc phep doc, ghi thong tin chi tieu cua du an minh quan ly
+--Tao ham chinh sach
 CREATE OR REPLACE FUNCTION VPD_ProjLeader_Charge (p_schema VARCHAR2, p_obj VARCHAR2)
 RETURN VARCHAR2
 AS

@@ -24,13 +24,13 @@ END;
 BEGIN DBMS_RLS.add_policy 
 (object_schema => 'OwnerDB',
 object_name => 'Staff',
-policy_name => 'XemTTNVien',
+policy_name => 'ViewStaffInfor',
 policy_function => 'vpd_sameDepart');
 END;
 
 
 --xem lương chỉ của mình func
-CREATE OR REPLACE FUNCTION user_only 
+CREATE OR REPLACE FUNCTION user_itself 
 ( 
 p_schema  IN  VARCHAR2 DEFAULT NULL, 
 p_object  IN  VARCHAR2 DEFAULT NULL
@@ -48,8 +48,8 @@ END;
 BEGIN DBMS_RLS.add_policy 
 (object_schema => 'OwnerDB',
 object_name => 'Staff',
-policy_name => 'XemLuongNVien',
-policy_function => 'user_only',
+policy_name => 'View_Staff_salary',
+policy_function => 'user_itself',
 function_schema =>'OwnerDB',
 sec_relevant_cols=>'Staff_Salary',
 sec_relevant_cols_opt => DBMS_RLS.all_rows
@@ -60,19 +60,19 @@ END;
 BEGIN DBMS_RLS.drop_policy 
 (object_schema => 'OwnerDB',
 object_name => 'Staff',
-policy_name => 'XemTTNVien');
+policy_name => 'ViewStaffInfor');
 END;
 --drop
 
 BEGIN DBMS_RLS.drop_policy 
 (object_schema => 'OwnerDB',
 object_name => 'Staff',
-policy_name => 'XemLuongNVien'
+policy_name => 'View_Staff_salary'
 );
 END;
 
 --drop
-drop FUNCTION user_only;
+drop FUNCTION user_itself;
 drop FUNCTION vpd_sameDepart;
 
 

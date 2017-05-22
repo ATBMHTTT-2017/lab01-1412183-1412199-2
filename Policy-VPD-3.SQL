@@ -33,6 +33,7 @@ DBMS_RLS.DROP_POLICY(
  );
 END;
 --test-case
+grant select on Charge to Depart_chief;
 select proj_id,Staff_id,  Charge_for, Amount from OwnerDB.Charge;
 --tracing
 --SELECT VALUE FROM V$DIAG_INFO WHERE NAME = 'Default Trace File';
